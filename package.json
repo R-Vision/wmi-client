@@ -1,6 +1,6 @@
 {
   "name": "wmi-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wrapper around the WMIC",
   "main": "index.js",
   "scripts": {
@@ -19,8 +19,5 @@
   "bugs": {
     "url": "https://github.com/R-Vision/wmi-client/issues"
   },
-  "homepage": "https://github.com/R-Vision/wmi-client",
-  "dependencies": {
-    "csv-parse": "^0.1.0"
-  }
+  "homepage": "https://github.com/R-Vision/wmi-client"
 }

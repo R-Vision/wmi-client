@@ -1,6 +1,5 @@
 'use strict';
 
-var parse = require('csv-parse');
 var exec = require('child_process').execFile;
 
 /**
@@ -15,36 +14,60 @@ var wmic = function (options) {
     this.namespace = options.namespace || 'root\\cimv2';
     this.delimiter = '^@^';
     this.wmic = options.wmic || 'wmic';
+    this.intRegexp = /^(\-|\+)?([1-9]+[0-9]*)$/;
+    this.floatRegexp = /^(\-|\+)?([0-9]+(\.[0-9]+)?([eE][0-9]+)?|Infinity)$/;
 
     this.parserOptions = {
         delimiter: this.delimiter,
         trim: true,
-        auto_parse: true,
-        columns: true,
-        skip_empty_lines: true,
-        comment: 'CLASS:'
+        auto_parse: true
     };
 
     return this;
 };
 
-/**
- * Convert string "(null)" to null
- * @param data
- * @returns {*}
- */
-var convertNull = function (data) {
-    data.forEach(function (item) {
-        for (var key in item) {
-            if (item.hasOwnProperty(key)) {
-                if (item[key] === '(null)') {
-                    item[key] = null;
-                }
+wmic.prototype._parse = function (data, options, callback) {
+    var self = this;
+    var keys = [];
+    var result = [];
+
+    data.toString().split(/\r?\n/).forEach(function (line, i) {
+        if (i !== 0) {
+            var item = line.split(options.delimiter);
+
+            if (i === 1) {
+                keys = item;
+            } else if (item.length === keys.length) {
+                var obj = {};
+
+                item.forEach(function (value, j) {
+                    if (options.trim === true) {
+                        value.toString().trim();
+                    }
+
+                    if (options.auto_parse === true) {
+                        if (value.toLowerCase() === '(null)') {
+                            value = null;
+                        } else if (value.toLowerCase() === 'true') {
+                            value = true;
+                        } else if (value.toLowerCase() === 'false') {
+                            value = false;
+                        } else if (self.intRegexp.test(value)) {
+                            value = parseInt(value, 10);
+                        } else if (self.floatRegexp.test(value)) {
+                            value = parseFloat(value);
+                        }
+                    }
+
+                    obj[keys[j]] = value;
+                });
+
+                result.push(obj);
             }
         }
     });
 
-    return data;
+    callback(null, result);
 };
 
 /**
@@ -114,13 +137,7 @@ wmic.prototype.exec = function (callback) {
             return callback(err || stderr);
         }
 
-        parse(stdout, self.parserOptions, function (err, data) {
-            if (data) {
-                data = convertNull(data);
-            }
-
-            callback(err, data);
-        });
+        self._parse(stdout, self.parserOptions, callback);
     });
 };
 
