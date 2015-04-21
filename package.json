@@ -1,0 +1,26 @@
+{
+  "name": "wmi-client",
+  "version": "0.0.1",
+  "description": "Wrapper around the WMIC",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/R-Vision/wmi-client.git"
+  },
+  "keywords": [
+    "wmi",
+    "wmic"
+  ],
+  "author": "Nickolay Alexandrov <nick.alexandrov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/R-Vision/wmi-client/issues"
+  },
+  "homepage": "https://github.com/R-Vision/wmi-client",
+  "dependencies": {
+    "csv-parse": "^0.1.0"
+  }
+}
