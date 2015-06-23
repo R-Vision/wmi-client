@@ -1,5 +1,5 @@
 # wmi-client
-Wrapper around the WMIC. Only for Linux.
+Wrapper around the WMI client. Linux and Windows WMI clients are supported.
 
 ### Install
 ```bash
@@ -17,7 +17,7 @@ var wmi = new WmiClient({
 });
 
 wmi.query('SELECT Caption,Version FROM Win32_OperatingSystem', function (err, result) {
-    console.log(err || result);
+    console.log(result);
     
     /*
     RESULT:
@@ -30,5 +30,4 @@ wmi.query('SELECT Caption,Version FROM Win32_OperatingSystem', function (err, re
 ```
 
 ### TODO
-* Support Windows
 * Simple mode (like WMIC on Windows)

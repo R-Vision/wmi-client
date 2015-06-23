@@ -1,7 +1,7 @@
 {
   "name": "wmi-client",
-  "version": "0.0.2",
-  "description": "Wrapper around the WMIC",
+  "version": "0.1.0",
+  "description": "Wrapper around the WMI client. Linux and Windows WMI clients are supported.",
   "main": "index.js",
   "scripts": {
     "test": "npm test"
