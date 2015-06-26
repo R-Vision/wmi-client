@@ -1,3 +1,5 @@
+'use strict';
+
 var WmiClient = require('../');
 
 var wmi = new WmiClient({
