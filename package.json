@@ -1,6 +1,6 @@
 {
   "name": "wmi-client",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Wrapper around the WMI client. Linux and Windows WMI clients are supported.",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/R-Vision/wmi-client/issues"
   },
-  "homepage": "https://github.com/R-Vision/wmi-client"
+  "homepage": "https://github.com/R-Vision/wmi-client",
+  "dependencies": {
+    "getos": "^2.4.0"
+  }
 }
