@@ -4,7 +4,8 @@
   "description": "Wrapper around the WMI client. Linux and Windows WMI clients are supported.",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "install": "node scripts/install.js"
   },
   "repository": {
     "type": "git",
