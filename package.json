@@ -1,6 +1,6 @@
 {
   "name": "wmi-client",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Wrapper around the WMI client. Linux and Windows WMI clients are supported.",
   "main": "index.js",
   "scripts": {
