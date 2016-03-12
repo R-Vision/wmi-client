@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/R-Vision/wmi-client",
   "dependencies": {
-    "getos": "^2.4.0"
+    "getos": "^2.6.0"
   }
 }
