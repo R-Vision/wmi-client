@@ -13,7 +13,8 @@ var WmiClient = require('wmi-client');
 var wmi = new WmiClient({
     username: 'LOGIN',
     password: 'PASSWORD',
-    host: 'IP-ADDRESS'
+    host: 'IP-ADDRESS',
+    ntlm2: true // only for linux
 });
 
 wmi.query('SELECT Caption,Version FROM Win32_OperatingSystem', function (err, result) {
