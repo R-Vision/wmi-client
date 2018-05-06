@@ -47,5 +47,3 @@ wmi.query('SELECT Caption,Version FROM Win32_OperatingSystem', function (err, re
     */
 });
 ```
-
-Optional parameters:
