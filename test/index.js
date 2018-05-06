@@ -1,13 +1,17 @@
 'use strict';
 
-var WmiClient = require('../');
+if(process.platform === 'win32') {
+    var WmiClient = require('../');
 
-var wmi = new WmiClient({
-    username: null,
-    password: null,
-    host: '127.0.0.1'
-});
+    var wmi = new WmiClient();
 
-wmi.query('SELECT * FROM Win32_Process', function (err, result) {
-    console.log(err || result);
-});
+    wmi.query('SELECT * FROM Win32_Process', function (err, result) {
+        if(err === null) {
+            console.log('Test success!');
+        }
+        else {
+            console.log('Test failure!');
+            console.log(err);
+        }
+    });
+}
