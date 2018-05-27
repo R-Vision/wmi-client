@@ -1,6 +1,8 @@
 # wmi-client
 Wrapper around the WMI client. Linux and Windows WMI clients are supported.
 
+Wmic binaries for Ubuntu and CentOS are included.
+
 ### Install
 ```bash
 npm install wmi-client
